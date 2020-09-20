@@ -16,9 +16,11 @@ public class FormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final TextView name = findViewById(R.id.txtName);
-        TextView email = findViewById(R.id.txtEmail);
+        final TextView email = findViewById(R.id.txtEmail);
         final TextView password = findViewById(R.id.txtPassword);
         final TextView confirmPassword = findViewById(R.id.txtConfirm);
+
+
 
         findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,16 +31,26 @@ public class FormActivity extends AppCompatActivity {
                 }
                 else if (email.getText().toString().isEmpty())
                 {
-                    Toast.makeText(getApplicationContext(), "Must enter a name", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Must enter email", Toast.LENGTH_LONG).show();
                 }
                 else if (password.getText().toString().isEmpty())
                 {
-                    Toast.makeText(getApplicationContext(), "Must enter a name", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Must enter a password", Toast.LENGTH_LONG).show();
                 }
                 else if (confirmPassword.getText().toString().isEmpty())
                 {
-                    Toast.makeText(getApplicationContext(), "Must enter a name", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Must confirm password", Toast.LENGTH_LONG).show();
                 }
+
+                if (!password.getText().toString().equals(confirmPassword.getText().toString()))
+                {
+                    Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_LONG).show();
+
+                }
+
+                String message = "Welcome " + name.getText().toString() + ", to the SignUpForm App";
+                ((TextView)findViewById(R.id.txtMessage)).setText(message.toString());
+
             }
         });
 
